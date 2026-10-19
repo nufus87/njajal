@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loma - Portofolio</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: #f6f8fa;
+      --border: #d0d7de;
+      --text: #1f2328;
+      --muted: #59636e;
+      --accent: #0969da;
+      --accent-hover: #0550ae;
+      --radius: 6px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent-hover); text-decoration: underline; }
+
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav, .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .logo { font-weight: 600; font-size: 1.1rem; color: var(--text); }
+
+    nav ul { list-style: none; display: flex; gap: 20px; }
+    nav a { color: var(--muted); font-size: 0.95rem; }
+    nav a:hover { color: var(--accent); text-decoration: none; }
+
+    .hero {
+      padding: 80px 0 60px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero h1 { font-size: 2.5rem; font-weight: 600; margin-bottom: 8px; }
+    .hero .role { color: var(--muted); font-size: 1.2rem; margin-bottom: 16px; }
+    .hero p { max-width: 640px; color: var(--muted); margin-bottom: 24px; }
+
+    .btn {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-right: 8px;
+    }
+    .btn:hover { background: #eaeef2; text-decoration: none; }
+    .btn.primary {
+      background: #1f883d;
+      border-color: rgba(31, 35, 40, 0.15);
+      color: #fff;
+    }
+    .btn.primary:hover { background: #1a7f37; }
+
+    section { padding: 56px 0; border-bottom: 1px solid var(--border); }
+    section:last-of-type { border-bottom: none; }
+
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about p { color: var(--muted); max-width: 720px; margin-bottom: 12px; }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .skill {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: 0.85rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      background: var(--bg);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 3px 12px rgba(140, 149, 159, 0.2);
+    }
+    .card h3 { font-size: 1.05rem; margin-bottom: 6px; }
+    .card .meta { font-size: 0.85rem; color: var(--muted); margin-bottom: 10px; }
+    .card p { font-size: 0.95rem; color: var(--muted); }
+
+    .timeline-item {
+      border-left: 2px solid var(--border);
+      padding: 0 0 24px 20px;
+      position: relative;
+    }
+    .timeline-item::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+      position: absolute;
+      left: -6px;
+      top: 6px;
+    }
+    .timeline-item h3 { font-size: 1.05rem; }
+    .timeline-item .meta { font-size: 0.85rem; color: var(--muted); margin-bottom: 4px; }
+    .timeline-item p { color: var(--muted); font-size: 0.95rem; }
+
+    form { display: grid; gap: 14px; max-width: 560px; }
+    label { font-size: 0.9rem; font-weight: 600; display: block; margin-bottom: 4px; }
+    input, textarea {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font: inherit;
+      background: var(--bg);
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.3);
+    }
+    textarea { min-height: 120px; resize: vertical; }
+
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2rem; }
+      nav ul { gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <span class="logo">Loma</span>
+      <ul>
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#proyek">Proyek</a></li>
+        <li><a href="#pengalaman">Pengalaman</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="container">
+        <h1>Halo, saya Loma</h1>
+        <p class="role">Profesional Perhotelan & Hospitality</p>
+        <p>
+          Lulusan Tourism Studies (Hospitality) dari Universitas Brawijaya dengan minat
+          membangun karier internasional di industri luxury hospitality.
+        </p>
+        <a href="#kontak" class="btn primary">Hubungi Saya</a>
+        <a href="#proyek" class="btn">Lihat Proyek</a>
+      </div>
+    </div>
+
+    <section id="tentang">
+      <div class="container about">
+        <h2>Tentang Saya</h2>
+        <p>
+          Saya memiliki latar belakang pendidikan di bidang pariwisata dengan spesialisasi
+          perhotelan. Pengalaman magang di bidang Sales & Marketing di Hotel Sahid Jaya Solo
+          membuat saya memahami bagaimana strategi penjualan dan pemasaran bekerja di industri hotel.
+        </p>
+        <p>
+          Saya berfokus pada pelayanan tamu yang berkualitas dan terus mengembangkan
+          kemampuan untuk bersaing di tingkat internasional.
+        </p>
+        <div class="skills">
+          <span class="skill">Guest Service</span>
+          <span class="skill">Sales & Marketing</span>
+          <span class="skill">Hotel Operations</span>
+          <span class="skill">Komunikasi</span>
+          <span class="skill">Bahasa Inggris</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="proyek">
+      <div class="container">
+        <h2>Proyek</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Proyek Pemasaran Hotel</h3>
+            <p class="meta">Sales & Marketing · Hotel Sahid Jaya Solo</p>
+            <p>Deskripsi singkat proyek atau kegiatan pemasaran yang Anda kerjakan selama magang.</p>
+          </div>
+          <div class="card">
+            <h3>Analisis Layanan Tamu</h3>
+            <p class="meta">Guest Experience · Akademik</p>
+            <p>Deskripsi singkat riset atau tugas akhir yang berkaitan dengan kepuasan tamu.</p>
+          </div>
+          <div class="card">
+            <h3>Konsep Event Hospitality</h3>
+            <p class="meta">Event Planning · Portofolio Pribadi</p>
+            <p>Deskripsi singkat rancangan acara atau konsep layanan yang pernah Anda buat.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pengalaman">
+      <div class="container">
+        <h2>Pengalaman</h2>
+        <div class="timeline-item">
+          <h3>Magang Sales & Marketing</h3>
+          <p class="meta">Hotel Sahid Jaya Solo · Tahun Mulai – Selesai</p>
+          <p>Ringkasan tugas dan pencapaian selama magang.</p>
+        </div>
+        <div class="timeline-item">
+          <h3>Sarjana Tourism Studies (Hospitality)</h3>
+          <p class="meta">Universitas Brawijaya · Tahun Lulus</p>
+          <p>Fokus pada manajemen perhotelan dan pelayanan pariwisata.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontak">
+      <div class="container">
+        <h2>Kontak</h2>
+        <form action="mailto:email@contoh.com" method="post" enctype="text/plain">
+          <div>
+            <label for="nama">Nama</label>
+            <input type="text" id="nama" name="nama" required>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div>
+            <label for="pesan">Pesan</label>
+            <textarea id="pesan" name="pesan" required></textarea>
+          </div>
+          <div>
+            <button type="submit" class="btn primary">Kirim Pesan</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Loma. Dibuat dengan HTML & CSS.</p>
+  </footer>
+
+</body>
+</html>
